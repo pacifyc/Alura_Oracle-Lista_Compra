@@ -1,7 +1,7 @@
 (() => {
     const criarTarefa = (evento) => {
 
-        evento.preventDeFault()
+        evento.preventDeFault();
 
         const lista = document.querySelector('[data-list]');
         const input = document.querySelector('[data-form-input]');
@@ -14,13 +14,14 @@
 
         tarefa.innerHTML = conteudo;
 
-        tarefa.appendChild(BotaoConclui())
+        tarefa.appendChild(BotaoConclui());
+        tarefa.appendChild(BotaoDeleta());
+
         lista.appendChild(tarefa);
-        input.value = " "
+        input.value = " ";
 
     }
-
-
+    
     const novaTarefa = document.querySelector('[data-form-button]');
 
     novaTarefa.addEventListener('click', criarTarefa);
@@ -39,11 +40,30 @@
     }
 
     const concluirTarefa = (evento) => {
-        const botaoConcluir = evento.target;
+        const botaoConclui = evento.target;
 
         const tarefaCompleta  = botaoConclui.parentEleement;
         tarefaCompleta.classList.toggle('done');
+    }
 
+
+    const BotaoDeleta = () => {
+        const botaoDeleta = document.createElement('button');
+        botaoDeleta.innerText = 'deletar';
+
+        botaoDeleta.addEventListener('click', deletaTarefa);
+
+        return botaoDeleta;
+    }
+
+    const deletaTarefa = (evento) => {
+        const botaoDeleta = evento.target;
+        const tarefaCompleta = botaoDeleta.parentElement;
+
+        //console.log(tarefaCompleta);
+        tarefaCompleta.remove;
+
+        return botaoDeleta;
 
     }
 
